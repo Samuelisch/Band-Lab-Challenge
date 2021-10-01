@@ -28,4 +28,31 @@ postList.appendChild(posts);
 listContainer.appendChild(sortingBtns);
 listContainer.appendChild(postList);
 
+// function to be exported - fetches JSON data and appends to content
+fetch('https://jsonplaceholder.typicode.com/posts/')
+.then(response => response.json())
+.then(json => {
+  for (let post of json) {
+    const postNode = document.createElement('li');
+    postNode.className = 'post-node';
+    const body = post.body, title = post.title, id = post.userId;
+    postNode.dataset.userid = id;
+    // create container for content of post
+    const postContent = document.createElement('div');
+    postContent.className = 'post-content';
+    // create h5 element for title
+    const postTitle = document.createElement('div');
+    postTitle.className = 'post-title';
+    postTitle.innerHTML = `<b>${title}</b>`;
+    // create p element for post body
+    const postBody = document.createElement('p');
+    postBody.textContent = body
+
+    postContent.appendChild(postTitle);
+    postContent.appendChild(postBody);
+    postNode.appendChild(postContent);
+    posts.appendChild(postNode);
+  }
+})
+
 export default listContainer

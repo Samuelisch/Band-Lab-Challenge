@@ -32,8 +32,7 @@ body {
 }
 
 .list-container {
-  background-color: rgb(207, 207, 207);
-  border: 1px solid blue;
+  background-color: rgb(207, 207, 207);;
 }
 
 .sorting-btns {
@@ -42,9 +41,40 @@ body {
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
-  border: 1px solid red;
 }
 
 .btn {
+  font-size: 1.5rem;
+}
+
+.id-sort {
+  width: 100px;
+}
+
+.post-list {
+  margin: none;
+}
+
+.posts {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.posts li {
+  font-size: 1.3rem;
+  list-style: none;
+  border-bottom: 1px solid black;
+  padding: 5px 0;
+}
+
+.post-content {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.post-title {
   font-size: 1.5rem;
 }
