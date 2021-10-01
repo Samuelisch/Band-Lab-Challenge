@@ -94,7 +94,19 @@ const orderTitle = () => {
 }
 
 const filterList = () => {
-  
+  const idInput = document.querySelector('.id-sort');
+  const idNum = idInput.value;
+  console.log(idNum);
+  // checkes if each node's dataset is idNum, if it is or input empty, display.
+  const postList = document.querySelectorAll('.posts li');
+  postList.forEach(post => {
+    if (idNum == post.dataset.userid || idNum === '') {
+      post.style.display = 'block';
+    }
+    else {
+      post.style.display = 'none';
+    }
+  })
 }
 
 // event listeners
