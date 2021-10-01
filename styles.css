@@ -20,3 +20,31 @@ body {
 .nav-bar button {
   margin: 10px 15px;
 }
+
+#content {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  display: flex;
+  width: 80%;
+  max-width: 700px;
+  border: 1px solid black;
+}
+
+.list-container {
+  background-color: rgb(207, 207, 207);
+  border: 1px solid blue;
+}
+
+.sorting-btns {
+  font-size: 1.5rem;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border: 1px solid red;
+}
+
+.btn {
+  font-size: 1.5rem;
+}
