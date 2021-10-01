@@ -1,0 +1,22 @@
+:root,
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: wheat;
+}
+
+.nav-bar {
+  width: 100%;
+  background-color: rgb(219, 199, 161);
+  display: flex;
+  justify-content: center;
+}
+
+.nav-bar button {
+  margin: 10px 15px;
+}
