@@ -55,4 +55,50 @@ fetch('https://jsonplaceholder.typicode.com/posts/')
   }
 })
 
+// sorted aToz or zToa
+let aToz = false
+
+const orderTitle = () => {
+  aToz = !aToz
+  const postList = document.querySelector('.posts');
+  let newList = postList.cloneNode(false);
+  // declare a new list to store all list elements
+  let list = [];
+  for (let i = postList.childNodes.length; i--;) {
+    if (postList.childNodes[i].nodeName === 'LI') {
+      list.push(postList.childNodes[i]);
+    }
+  }
+  // sort list based on title
+  if (aToz) {
+    titleSort.textContent = 'Title (a-z)'
+    list.sort((a, b) => {
+      let aTitle = a.childNodes[0].childNodes[0].textContent;
+      let bTitle = b.childNodes[0].childNodes[0].textContent;
+      return aTitle.localeCompare(bTitle);
+    })
+  } else {
+    titleSort.textContent = 'Title (z-a)'
+    list.sort((a, b) => {
+      let aTitle = a.childNodes[0].childNodes[0].textContent;
+      let bTitle = b.childNodes[0].childNodes[0].textContent;
+      return bTitle.localeCompare(aTitle);
+    })
+  }
+
+  for (let i = 0; i < list.length; i++) {
+    newList.appendChild(list[i]);
+  }
+  // replace with new list
+  postList.parentNode.replaceChild(newList, postList);
+}
+
+const filterList = () => {
+  
+}
+
+// event listeners
+titleSort.addEventListener('click', orderTitle)
+idSort.addEventListener('change', filterList)
+
 export default listContainer
