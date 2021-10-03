@@ -36,7 +36,7 @@ fetch('https://jsonplaceholder.typicode.com/posts/')
     const postNode = document.createElement('li');
     postNode.className = 'post-node';
     const body = post.body, title = post.title, id = post.userId;
-    postNode.dataset.userid = id;
+    postNode.dataset.id = id;
     // create container for content of post
     const postContent = document.createElement('div');
     postContent.className = 'post-content';
@@ -96,11 +96,10 @@ const orderTitle = () => {
 const filterList = () => {
   const idInput = document.querySelector('.id-sort');
   const idNum = idInput.value;
-  console.log(idNum);
   // checkes if each node's dataset is idNum, if it is or input empty, display.
   const postList = document.querySelectorAll('.posts li');
   postList.forEach(post => {
-    if (idNum == post.dataset.userid || idNum === '') {
+    if (idNum == post.dataset.id || idNum === '') {
       post.style.display = 'block';
     }
     else {
