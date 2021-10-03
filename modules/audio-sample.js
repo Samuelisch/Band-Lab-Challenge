@@ -1,49 +1,70 @@
 const btnContainer = document.createElement('div');
 btnContainer.className = 'music-container'
+const trackContainer = document.createElement('div')
+trackContainer.className = 'track-container'
 const track1Button = document.createElement('button');
+track1Button.dataset.num = '1'
 const track2Button = document.createElement('button');
+track2Button.dataset.num = '2'
 track1Button.textContent = 'New wave kit sample';
 track2Button.textContent = 'Synth Organ sample';
+const playPauseButton = document.createElement('button');
+playPauseButton.textContent = 'Play/Pause';
 
-btnContainer.appendChild(track1Button)
-btnContainer.appendChild(track2Button)
+trackContainer.appendChild(track1Button);
+trackContainer.appendChild(track2Button);
+btnContainer.appendChild(trackContainer);
+btnContainer.appendChild(playPauseButton);
 
-const ctx1 = new AudioContext();
-const ctx2 = new AudioContext();
-let audio1, audio2;
+let ctx, audio1, audio2, audioSelect;
 
-fetch('./sounds/new-wave-kit.ogg')
-  .then(data => data.arrayBuffer())
-  .then(arrayBuffer => ctx1.decodeAudioData(arrayBuffer))
-  .then(decodedAudio => {
-    audio1 = decodedAudio
-  });
-
-fetch('./sounds/synth-organ.ogg')
-  .then(data => data.arrayBuffer())
-  .then(arrayBuffer => ctx2.decodeAudioData(arrayBuffer))
-  .then(decodedAudio => {
-    audio2 = decodedAudio
-  });
-
-let fileToPlay;
-
-const playback1 = () => {
-  const playSound = ctx1.createBufferSource();
-  playSound.buffer = audio1;
-  playSound.connect(ctx1.destination);
-  playSound.start(ctx1.currentTime);
+const loadTrack = (e) => {
+  ctx = new AudioContext();
+  const trackNum = e.target.dataset.num;
+  let fileName, audioExists;
+  if (trackNum === '1') {
+    fileName = './sounds/new-wave-kit.ogg';
+    audioExists = audio1;
+  } else {
+    fileName = './sounds/synth-organ.ogg';
+    audioExists = audio2;
+  }
+  // fetch track from localfile if not fetched yet
+  if (!audioExists) {
+    fetch(fileName)
+      .then(data => data.arrayBuffer())
+      .then(arrayBuffer => ctx.decodeAudioData(arrayBuffer))
+      .then(decodedAudio => {
+        if (trackNum === '1') {
+          audio1 = decodedAudio;
+          audioSelect  = audio1;
+        } else {
+          audio2 = decodedAudio;
+          audioSelect = audio2;
+        }
+        console.log('fetched audio', trackNum)
+      })
+      .catch(err => console.log(err));
+  } else {
+    if (trackNum === '1') {
+      audioSelect = audio1;
+    } else {
+      audioSelect = audio2;
+    }
+    console.log('loaded audio', trackNum)
+  }
 }
 
-const playback2 = () => {
-  const playSound = ctx2.createBufferSource();
-  playSound.buffer = audio2;
-  playSound.connect(ctx2.destination);
-  playSound.start(ctx2.currentTime);
+const playMusic = () => {
+  const playSound = ctx.createBufferSource();
+  playSound.buffer = audioSelect;
+  playSound.connect(ctx.destination);
+  playSound.start(ctx.currentTime);
 }
 
-track1Button.addEventListener('click', playback1);
-track2Button.addEventListener('click', playback2);
+track1Button.addEventListener('click', loadTrack);
+track2Button.addEventListener('click', loadTrack);
+playPauseButton.addEventListener('click', playMusic);
 
 
 export default btnContainer;
