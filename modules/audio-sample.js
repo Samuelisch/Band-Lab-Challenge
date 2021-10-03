@@ -1,5 +1,7 @@
 const btnContainer = document.createElement('div');
 btnContainer.className = 'music-container'
+const trackDisplay = document.createElement('div');
+trackDisplay.className = 'track-display'
 const trackContainer = document.createElement('div')
 trackContainer.className = 'track-container'
 const track1Button = document.createElement('button');
@@ -13,6 +15,7 @@ playPauseButton.textContent = 'Play/Pause';
 
 trackContainer.appendChild(track1Button);
 trackContainer.appendChild(track2Button);
+btnContainer.appendChild(trackDisplay);
 btnContainer.appendChild(trackContainer);
 btnContainer.appendChild(playPauseButton);
 
@@ -52,6 +55,11 @@ const loadTrack = (e) => {
       audioSelect = audio2;
     }
     console.log('loaded audio', trackNum)
+  }
+  if (trackNum === '1') {
+    trackDisplay.textContent = 'Selected: Track 1 - new-wave-kit'
+  } else {
+    trackDisplay.textContent = 'Selected: Track 2 - synth-organ'
   }
 }
 
