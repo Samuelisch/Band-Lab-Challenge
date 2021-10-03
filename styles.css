@@ -7,18 +7,22 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: wheat;
+  background: #2f2fa2;
+  color: rgb(233, 233, 233);
 }
 
 .nav-bar {
   width: 100%;
-  background-color: rgb(219, 199, 161);
   display: flex;
   justify-content: center;
 }
 
 .nav-bar button {
   margin: 10px 15px;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: #f64c72;
 }
 
 #content {
@@ -28,7 +32,6 @@ body {
   display: flex;
   width: 80%;
   max-width: 700px;
-  border: 1px solid black;
 }
 
 .default-text {
@@ -37,22 +40,31 @@ body {
 }
 
 .list-container {
-  background-color: rgb(207, 207, 207);;
+  background-color: #f64c72;
+  border-radius: 15px;
 }
 
 .sorting-btns {
   font-size: 1.5rem;
+  background: #99738e;
   border-bottom: 1px solid black;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   padding: 10px 0;
 }
 
 .btn {
+  border: none;
+  border-radius: 5px;
   font-size: 1.5rem;
+  padding: 7px;
 }
 
 .id-sort {
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
   width: 100px;
 }
 
@@ -69,24 +81,65 @@ body {
 }
 
 .posts li {
-  font-size: 1.3rem;
   list-style: none;
   border-bottom: 1px solid black;
-  padding: 5px 0;
+  padding: 10px 0;
 }
 
 .post-content {
   width: 80%;
   margin: 0 auto;
+  font-size: 1.4rem
 }
 
 .post-title {
-  font-size: 1.5rem;
+  font-size: 1.9rem;
 }
 
 .music-container {
+  background: #f64c72;
   padding: 10px 20px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+}
+
+.track-btn {
+  border: 1px solid #2f2fa2;
+  background: inherit;
+  border-radius: 10px;
+  color: rgb(233, 233, 233);
+  padding: 10px;
+}
+
+.track-btn:active {
+  background: #2f2fa2;
+  border: 1px solid #f64c72;
+}
+
+.control-btn {
+  background: #2f2fa2;
+  border: none;
+  color: rgb(233, 233, 233);
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.control-btn:active {
+  background: #ec2d57;
+}
+
+.track-display {
+  font-size: 2rem;
+}
+
+.track-container {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
   justify-content: space-around;
+}
+
+.control-container > * {
+  margin: 0 10px;
 }
