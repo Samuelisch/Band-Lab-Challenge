@@ -41,7 +41,6 @@ body {
 
 .list-container {
   background-color: #f64c72;
-  border-radius: 15px;
 }
 
 .sorting-btns {
@@ -102,6 +101,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 10px;
 }
 
 .track-btn {
