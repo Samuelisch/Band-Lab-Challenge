@@ -7,7 +7,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #2f2fa2;
+  background: rgb(233, 233, 233);
   color: rgb(233, 233, 233);
 }
 
@@ -22,7 +22,8 @@ body {
   border: none;
   padding: 5px 10px;
   border-radius: 10px;
-  background: #f64c72;
+  background: #2f2fa2;
+  color: rgb(233, 233, 233);
 }
 
 #content {
@@ -40,12 +41,12 @@ body {
 }
 
 .list-container {
-  background-color: #f64c72;
+  background-color: #2f2fa2;
 }
 
 .sorting-btns {
   font-size: 1.5rem;
-  background: #99738e;
+  background: #1e1e61;
   border-bottom: 1px solid black;
   display: flex;
   justify-content: space-around;
