@@ -1,4 +1,4 @@
-# BandLab Technologies Code Challenge
+# Double Application page
 
 
 ## Layout of application
